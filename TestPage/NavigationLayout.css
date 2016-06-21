@@ -1,0 +1,10 @@
+@charset = "utf-8";
+body{
+    text-align:center;
+    }
+
+#sideWrap{
+    width:280px;
+    float:left;
+    backgroud-color:#90a4ae;
+    }
