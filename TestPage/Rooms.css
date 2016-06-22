@@ -17,7 +17,7 @@ body{
 #mainWrap{
     width:600px;
     float:right;
-    background-color:yellow;
+    background-color:#bbdefb;
     height:900px;
     }
 
@@ -40,3 +40,30 @@ body{
     height:200;
     background-color:#e1bee7;
     }
+
+.testcolor{
+    background-color:#f3e5f5;
+    }
+
+#rightSide{
+    float:right;
+    }
+
+.imgSize {
+    max-width:100%;
+    height:auto;
+    }
+
+.name {
+    max-width:10%;
+    height:auto;
+    }
+
+.sideMenu{
+width:180px;
+float:left;
+margin:0;
+;adding:0;
+background-color:#424242;
+height:;
+}
