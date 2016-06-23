@@ -3,3 +3,18 @@
   max-width: 1280px;
   width: 100%;
 }
+
+.iconSize{
+    max-width:30px;
+}
+
+.sideBar-fixed{
+    position:fixed;
+    visibility:visible;
+    min-height:100%;
+}
+
+.titleBar{
+    position:fixed;
+    padding-left: 25%;
+}
