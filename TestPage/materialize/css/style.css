@@ -15,6 +15,24 @@
 }
 
 .titleBar{
-    position:fixed;
-    padding-left: 25%;
+    margin-left: 20%;
+}
+
+.chat{
+    margin-left: 35%;
+    margin-right:-30%;
+    padding-left:2%;
+}
+
+.good{
+    margin-left:0%;
+}
+
+.image{
+margin-top:2%;
+    margin-right:2%;
+}
+
+.name{
+    margin-left:0%;
 }
