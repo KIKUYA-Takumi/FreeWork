@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% block body %}
+    <h1>Register</h1>
+    <form method="post" action="create_user">{% csrf_token %}
+    User ID: <input type="text" name="username" />
+    <br />
+    Password: <input type="password" name="password" />
+    <br />
+    <input type="submit" value="Register" />
+  </form>
+{% endblock %}
+    <a href="{% url 'crud:index' %}"><input typt="submit" value="ログインページへ"></a>
+</html>
