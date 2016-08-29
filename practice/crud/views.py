@@ -8,7 +8,7 @@ from django.contrib import messages
 
 
 def index(request):
-    return render(request, 'crud/index.html')
+    return render(request, 'crud/index.html', {})
 
 
 def add(request):
@@ -32,9 +32,11 @@ def create_user(request):
     username = request.POST['username']
     password = request.POST['password']
     newuser = User.objects.create_user(username, None, password)
+    #newuser = User.objects.create_user(username=username, password=password)
+    newuser.is_active = True
     newuser.save()
     messages.success(request, '登録完了!')
-    return redirect('crud/index.html')
+    return redirect('crud:index')
 
 
 def login(request):
@@ -44,13 +46,19 @@ def login(request):
     if user is not None:
         if user.is_active:
             auth_login(request, user)
-            return redirect('crud/home.html')
+            return redirect('crud:home')
         else:
-            return redirect('crud/index.html')
+            messages.error(request, '入力情報に誤りがあります!')
+            # return redirect('crud:index')
     else:
-        return redirect('crud/index.html')
+        # messages.error(request, '入力情報が不正です!')
+        return redirect('crud:index')
+
 
 
 def home(request):
     return render_to_response('crud/home.html')
 
+
+def logout(request):
+    return render(request, 'crud/logged_out.html')

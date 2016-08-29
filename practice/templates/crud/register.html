@@ -6,7 +6,8 @@
 </head>
 {% block body %}
     <h1>Register</h1>
-    <form method="post" action="create_user">{% csrf_token %}
+    <form method="post" action="{% url 'crud:create_user' %}">
+    {% csrf_token %}
     User ID: <input type="text" name="username" />
     <br />
     Password: <input type="password" name="password" />
@@ -14,5 +15,5 @@
     <input type="submit" value="Register" />
   </form>
 {% endblock %}
-    <a href="{% url 'crud:index' %}"><input typt="submit" value="ログインページへ"></a>
+    <a href="{% url 'crud:index' %}"><input type="submit" value="ログインページへ"></a>
 </html>

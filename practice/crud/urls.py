@@ -1,4 +1,5 @@
 from django.conf.urls import url
+from django.contrib.auth import views as auth_views
 from . import views
 
 
@@ -9,7 +10,7 @@ urlpatterns = [
     url(r'^delete/$', views.delete, name='delete'),
     url(r'^register/', views.register, name='register'),
     url(r'^create_user$', views.create_user, name='create_user'),
-    url(r'^home/', views.login, name='login'),
-    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'crud/login.html'}),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', {'template_name': 'crud/logged_out.html'}),
+    url(r'^home/', views.home, name='home'),
+    url(r'^login/', views.login, name='login'),
+    url(r'^logout', views.logout, name='logout'),
 ]
