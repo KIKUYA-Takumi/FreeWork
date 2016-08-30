@@ -20,5 +20,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^crud/', include('crud.urls', namespace='crud')),
-    url(r'^nippo/', include('nippo.urls', namespace='nippo')),
+    url(r'^report/', include('report.urls', namespace='report')),
 ]
