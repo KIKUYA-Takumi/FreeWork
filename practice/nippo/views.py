@@ -1,14 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+
+from .models import Report, Comment
+from .forms import ReportForm, CommentForm
 
 
 # Create your views here.
 
 
-def register(request):
-    # username = request.POST['username']
-    return render(request, 'nippo/login.html', {})
-
-
 def index(request):
-    return render(request, 'nippo/login.html', {})
+    return render(request, 'nippo/index.html', {})
