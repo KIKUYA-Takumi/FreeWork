@@ -1,0 +1,14 @@
+{% extends "report/index.html" %}
+
+
+{% block body %}
+    <form method="post" action="{% url 'report:create_report' %}">
+        {% for field in form %}
+            {% if field.error %}
+                <span>{{ field.errors }}</span>
+            {% endif %}
+            <label>{{ field.label_tag }}</label>
+            <label>{{ field }}</label>
+        {% endfor %}
+    </form>
+{% endblock %}

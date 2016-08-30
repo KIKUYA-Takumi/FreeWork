@@ -1,0 +1,12 @@
+{% extends "report/base.html" %}
+
+{% block title %}Daily Report1{% endblock %}
+
+{% block body %}
+    <h1>index</h1>
+    <a href="{% url 'report:entries'%}">日報を書く</a>
+
+    {% for field in reports %}
+        <br>{{ field.report_content }}
+    {% endfor %}
+{% endblock %}
