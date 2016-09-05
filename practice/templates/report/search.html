@@ -1,0 +1,17 @@
+{% extends "report/base.html" %}
+
+{% block body %}
+<form method="get", action="{% url 'report:search' %}">
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="検索">
+</form>
+<a href="{% url 'report:index'%}">日報一覧</a>
+{% if reports %}
+    <h3>検索結果</h3>
+    {% for report in reports %}
+        <p>{{ report.report_content  }}</p>
+    {% endfor %}
+{% endif %}
+{% endblock %}

@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.models import User
+
 from .models import  Report, Comment
 
 
@@ -19,3 +21,13 @@ class CommentForm(forms.ModelForm):
         widget = {
             'comment': forms.Textarea(attrs={'cols': 40, 'rows': 25})
         }
+
+
+class SearchForm(forms.Form):
+    search_word = forms.CharField(min_length=1, max_length=30)
+
+
+class UserCreationForm(forms.Form):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password',)

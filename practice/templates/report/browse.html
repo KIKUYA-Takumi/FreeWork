@@ -1,0 +1,10 @@
+{% extends "report/base.html" %}
+
+{% block body %}
+    {% if report_id %}
+        <form method="post" action="{% url 'report:edition' report_id=report_id %}">
+    {% else %}
+        <form method="post" action="{% url 'report:' %}">
+
+        </form>
+{% endblock %}

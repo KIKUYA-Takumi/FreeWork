@@ -20,3 +20,8 @@ class Comment(models.Model):
     comment = models.CharField(max_length=999)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Author(models.Model):
+    name = models.CharField(max_length=30)
+    create_by = models.ForeignKey(User, on_delete=models.CASCADE)
