@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from . import views
-from .views import AuthorCreate, ReportIndex, ReportDetail
+from .views import AuthorCreate, ReportIndex, ReportDetail, ReportEdition
 
 
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^user_creation/', AuthorCreate.as_view(), name='user_creation'),
     url(r'^report_list/', ReportIndex.as_view(), name='report_list'),
     url(r'^(?P<pk>[0-9]+)/$', ReportDetail.as_view(), name='report_detail'),
+    url(r'^(?P<pk>[0-9]+)/edition/$', ReportEdition.as_view(), name='report_edition'),
 ]

@@ -9,7 +9,7 @@ class ReportForm(forms.ModelForm):
         model = Report
         fields = ('report_title', 'report_content')
         widget = {
-            'report_title': forms.TextInput(attrs={'size' : 50}),
+            'report_title': forms.TextInput(attrs={'size': 50}),
             'report_content': forms.Textarea(attrs={'cols': 40, 'rows': 25})
         }
 

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.template import RequestContext
 from django.db.models import Q
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.core.urlresolvers import reverse
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -93,6 +93,14 @@ class ReportDetail(DetailView):
     model = Report
     template_name = 'report/detail.html'
 
+
+class ReportEdition(UpdateView):
+    model = Report
+    form_class = ReportForm
+    template_name = 'report/report_form.html'
+
+    def get_success_url(self):
+        return reverse('report:report_edition', args=(self.object.id,))
 
 
 

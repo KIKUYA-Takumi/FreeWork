@@ -2,6 +2,11 @@
 
 {% block body %}
 Detail
+{% if object.report_id %}
 <h1>{{ object.report_title }}</h1>
 <h1>{{ object.report_content }}</h1>
+{% endif %}
+<a href="{% url 'report:report_list' %}">日報一覧へ</a>
+<a href="{% url 'report:search'%}">日報を検索</a>
+<a href="{% url 'report:report_edition' object_id=object.id %}">日報を編集</a>
 {% endblock %}
