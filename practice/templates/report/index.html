@@ -8,9 +8,10 @@
     <a href="{% url 'report:search'%}">日報を検索</a>
 
     {% for field in reports %}
-        <br>{{ field.report_title }}
+        <br>
+        <a href="{% url 'report:report_detail' field.id %}">{{ field.report_title }}</a>
     {% endfor %}
     {% for field in object_list %}
-        <br><a href="{% url 'report:report_detail' report_id=report.id %}">{{ field.report_title }}</a>
+        <br><a href="{% url 'report:report_detail' field.id %}">{{ field.report_title }}</a>
     {% endfor %}
 {% endblock %}

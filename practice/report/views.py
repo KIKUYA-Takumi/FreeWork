@@ -3,10 +3,11 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.template import RequestContext
 from django.db.models import Q
-from django.views.generic.edit import CreateView, UpdateView
-from django.core.urlresolvers import reverse
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+
 
 from .models import Report, Comment, Author
 from .forms import ReportForm, CommentForm, SearchForm, UserCreationForm
@@ -84,7 +85,7 @@ class AuthorCreate(CreateView):
         return reverse('report:user_creation')
 
 
-class ReportIndex(ListView):
+class ReportList(ListView):
     model = Report
     template_name = 'report/index.html'
 
@@ -92,6 +93,9 @@ class ReportIndex(ListView):
 class ReportDetail(DetailView):
     model = Report
     template_name = 'report/detail.html'
+
+    def get_success_url(self):
+        return reverse('report:report_detail', args=(self.object.id,))
 
 
 class ReportEdition(UpdateView):
@@ -101,6 +105,12 @@ class ReportEdition(UpdateView):
 
     def get_success_url(self):
         return reverse('report:report_edition', args=(self.object.id,))
+
+
+class ReportDelete(DeleteView):
+    model = Report
+    template_name = 'report/report_delete.html'
+    success_url = reverse_lazy('report:report_list')
 
 
 
