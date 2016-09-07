@@ -7,10 +7,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-
+from django.contrib.auth import authenticate, login
 
 from .models import Report, Comment, Author
-from .forms import ReportForm, CommentForm, SearchForm, UserCreationForm
+from .forms import ReportForm, CommentForm, SearchForm, UserCreationForm, UserForm
 
 
 # Create your views here.
@@ -25,16 +25,16 @@ def entries(request):
     return render(request, 'report/entry.html')
 
 
-def create_report(request):
-    form = ReportForm(request.POST or None)
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-            messages.success(request, '投稿を受け付けました!')
-            return render(request, 'report/index.html', {'form': form})
-        else:
-            messages.error(request, '入力内容に誤りがあります!')
-    return render(request, 'report/entry.html', {'form': form})
+# def create_report(request):
+#     form = ReportForm(request.POST or None)
+#     if request.method == 'POST':
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, '投稿を受け付けました!')
+#             return render(request, 'report/index.html', {'form': form})
+#         else:
+#             messages.error(request, '入力内容に誤りがあります!')
+#     return render(request, 'report/entry.html', {'form': form})
 
 
 def search(request):
@@ -56,7 +56,7 @@ def search(request):
 
 def report_browse(request, report_id=None):
     if report_id:
-        report = get_object_or_404(Report, pk=report_id)
+        report = get_list_or_404(Report, pk=report_id)
     else:
         report = Report()
 
@@ -85,6 +85,16 @@ class AuthorCreate(CreateView):
         return reverse('report:user_creation')
 
 
+class ReportCreate(CreateView):
+    model = Report
+    form = ReportForm
+    fields = ('report_title','report_content')
+    template_name = 'report/entry.html'
+
+    def get_success_url(self):
+        return reverse('report:report_list')
+
+
 class ReportList(ListView):
     model = Report
     template_name = 'report/index.html'
@@ -111,6 +121,20 @@ class ReportDelete(DeleteView):
     model = Report
     template_name = 'report/report_delete.html'
     success_url = reverse_lazy('report:report_list')
+
+
+class CreateUser(CreateView):
+    model = User
+    form = UserForm
+    fields = ('username', 'email','password')
+    template_name = 'report/user_form.html'
+
+    def get_success_url(self):
+        return reverse('report:user_creation')
+
+
+
+
 
 
 
